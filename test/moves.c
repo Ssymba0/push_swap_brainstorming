@@ -4,11 +4,12 @@ void	sa(t_stack *a)
 {
 	int	tmp;
 
-	if (!a || !a->arr || a->size < 2)
-		return ;
-	tmp = a->arr[0];
-	a->arr[0] = a->arr[1];
-	a->arr[1] = tmp;
+	if (a->size > 1)
+	{
+		tmp = a->s[a->top];
+		a->s[a->top] = a->s[a->top - 1];
+		a->s[a->top - 1] = tmp;
+	}
 }
 
 void	sb(t_stack *b)
@@ -19,31 +20,29 @@ void	sb(t_stack *b)
 void	ss(t_stack *a, t_stack *b)
 {
 	sa(a);
-	sa(b);
+	sb(b);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	if (!a || !a->arr || !a->size)
-		return ;
-	b->arr[b->i] = a->arr[a->i];
-	b->size++;
-	b->i--;
-	a->size--;
-	a->i++;
+	if (a->top >= 0 && b->top < b->size)
+	{
+		b->top++;
+		b->s[b->top] = a->s[a->top];
+		if (a->top >= 0)
+			a->top--;
+	}
 }
 
 void	pa(t_stack *a, t_stack *b)
 {
-	if (!b || !b->arr || !b->size)
-		return ;
-	if (!a || !a->arr || !a->size)
-		return ;
-	a->arr[b->i] = b->arr[a->i];
-	b->size--;
-	b->i++;
-	a->size++;
-	a->i--;
+	if (b->top >= 0 && a->top < a->size)
+	{
+		a->top++;
+		a->s[a->top] = b->s[b->top];
+		if (b->top >= 0)
+			b->top--;
+	}
 }
 
 void	ra(t_stack *a)
@@ -51,16 +50,14 @@ void	ra(t_stack *a)
 	int	tmp;
 	int	i;
 
-	if (!a || !a->arr || a->size < 2)
-		return ;
-	tmp = a->arr[0];
-	i = 1;
-	while (i < a->size)
+	tmp = a->s[a->top];
+	i = a->top;
+	while (i > 0)
 	{
-		a->arr[i - 1] = a->arr[i];
-		i++;
+		a->s[i] = a->s[i - 1];
+		i--;
 	}
-	a->arr[i] = tmp;
+	a->s[0] = tmp;
 }
 
 void	rb(t_stack *b)
@@ -71,7 +68,7 @@ void	rb(t_stack *b)
 void	rr(t_stack *a, t_stack *b)
 {
 	ra(a);
-	ra(b);
+	rb(b);
 }
 
 void	rra(t_stack *a)
@@ -79,16 +76,14 @@ void	rra(t_stack *a)
 	int	tmp;
 	int	i;
 
-	if (!a || !a->arr || a->size < 2)
-		return ;
-	tmp = a->arr[a->size - 1];
-	i = a->size - 1;
-	while (i > 0)
+	tmp = a->s[0];
+	i = 0;
+	while (i < a->top)
 	{
-		a->arr[i] = a->arr[i - 1];
-		i--;
+		a->s[i] = a->s[i + 1];
+		i++;
 	}
-	a->arr[0] = tmp;
+	a->s[a->top] = tmp;
 }
 
 void	rrb(t_stack *b)
@@ -99,5 +94,5 @@ void	rrb(t_stack *b)
 void	rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
-	rra(b);
+	rrb(b);
 }
