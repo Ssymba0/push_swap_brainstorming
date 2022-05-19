@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:03:37 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 16:51:46 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/19 18:27:19 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,6 @@ int	get_index_max(t_stack *a)
 	return (index);
 }
 
-void	max_case(t_stack *a, t_stack *b, int i, t_info *info)
-{
-	while (info->v && b->s[i] < a->s[0])
-	{
-		rra(a);
-		info->v--;
-	}
-	pa(a, b);
-}
-
 void	is_v(t_stack *a, t_stack *b, int i, t_info *info)
 {
 	int	j;
@@ -104,8 +94,8 @@ void	is_v(t_stack *a, t_stack *b, int i, t_info *info)
 		if (b->s[b->top] > a->s[0])
 		{
 			pa(a, b);
-			ra(a);
 			info->v++;
+			ra(a);
 		}
 		else
 		{
@@ -143,31 +133,4 @@ void	push_a(t_stack *a, t_stack *b, t_info *info)
 		rra(a);
 		info->v--;
 	}
-}
-
-void	biggest_value(t_stack *b)
-{
-	int	i;
-	int	index;
-	int	tmp;
-
-	i = 0;
-	tmp = b->s[b->top];
-	index = 0;
-	while (i <= b->top)
-	{
-		if (b->s[i] > tmp)
-		{
-			tmp = b->s[i];
-			index = i;
-		}
-		i++;
-	}
-	i = index;
-	if (index >= (b->top + 1) / 2)
-		while (tmp != b->s[b->top])
-			rb(b);
-	else
-		while (tmp != b->s[b->top])
-			rrb(b);
 }

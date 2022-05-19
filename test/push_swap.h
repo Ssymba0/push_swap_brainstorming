@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:03:30 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 16:24:50 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/19 19:18:26 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,11 @@ void	four_elm(t_stack *a, t_stack *b);
 void	smallest_value(t_stack *a);
 void	three_elm(t_stack *a);
 void	two_elm(t_stack *a);
+void	biggest_value(t_stack *b);
+void	smallest_value(t_stack *a);
+void	max_case(t_stack *a, t_stack *b, int i, t_info *info);
+void	init_stack(t_stack *a, int ac);
+void	store_elem(t_stack *a, int ac, char **av);
+int		is_sorted(int *arr, int size);
 
 #endif

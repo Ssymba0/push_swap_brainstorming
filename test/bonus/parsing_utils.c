@@ -6,20 +6,11 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:56:21 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 20:11:47 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/19 19:27:16 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	check_res(long long res)
-{
-	if (res > 2147483647 || res < -2147483648)
-	{
-		write(2, "Error\n", 6);
-		exit(0);
-	}
-}
+#include "../push_swap.h"
 
 int	ft_isdigit(char *s)
 {
@@ -60,10 +51,8 @@ int	ft_atoi(char *s)
 		res = res * 10 + *p - '0';
 		p++;
 	}
-	check_res(res * sign);
 	return ((int)res * sign);
 }
-
 
 int	check_dups(int *a, int elm, int size)
 {
@@ -73,8 +62,52 @@ int	check_dups(int *a, int elm, int size)
 	while (i < size)
 	{
 		if (a[i] == elm)
+		{
+			printf("duplicate\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
+}
+
+void	init_stack(t_stack *a, int ac)
+{
+	int	i;
+
+	i = 0;
+	a->size = ac - 1;
+	a->s = (int *)malloc(sizeof(int) * a->size);
+	while (i < a->size)
+	{
+		a->s[i] = 0;
+		i++;
+	}
+	a->top = -1;
+}
+
+void	store_elem(t_stack *a, int ac, char **av)
+{
+	int	i;
+	int	elm;
+
+	i = ac - 1;
+	a->top = 0;
+	while (i > 0)
+	{
+		elm = ft_atoi(av[i]);
+		if (ft_isdigit(av[i]) && check_dups(a->s, elm, a->top))
+		{
+			a->s[a->top] = elm;
+			a->top++;
+			i--;
+		}
+		else
+		{
+			free(a->s);
+			printf("Error\n");
+			exit(0);
+		}
+	}
+	a->top--;
 }

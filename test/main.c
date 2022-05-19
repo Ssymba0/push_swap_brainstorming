@@ -6,11 +6,20 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:08:27 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 16:51:06 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/19 20:20:40 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(int *arr, int size)
+{
+	if (size == 1 || size == 0)
+		return (1);
+	if (arr[size - 1] > arr[size - 2])
+		return (0);
+	return (is_sorted(arr, size - 1));
+}
 
 void	store_elem(t_stack *a, int ac, char **av)
 {
@@ -31,7 +40,7 @@ void	store_elem(t_stack *a, int ac, char **av)
 		else
 		{
 			free(a->s);
-			printf("Error\n");
+			write(2, "Error\n", 6);
 			exit(0);
 		}
 	}
@@ -61,6 +70,8 @@ int	main(int ac, char **av)
 	init_stack(&a, ac);
 	init_stack(&b, ac);
 	store_elem(&a, ac, av);
+	if (a.size < 500 && is_sorted(a.s, a.top + 1))
+		return (0);
 	if (a.size == 2)
 		two_elm(&a);
 	else if (a.size == 3)
@@ -71,5 +82,4 @@ int	main(int ac, char **av)
 		five_elm(&a, &b);
 	else
 		big_sort(&a, &b);
-	system("leaks push_swap");
 }
