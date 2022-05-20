@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:14:28 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 19:25:36 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 03:36:33 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	pb(t_stack *a, t_stack *b)
 		if (a->top >= 0)
 			a->top--;
 	}
-	write(1, "pb\n", 3);
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -33,5 +32,4 @@ void	pa(t_stack *a, t_stack *b)
 		if (b->top >= 0)
 			b->top--;
 	}
-	write(1, "pa\n", 3);
 }

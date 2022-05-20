@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:13:34 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 19:25:47 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 03:36:52 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ void	s(t_stack *a)
 void	sa(t_stack *a)
 {
 	s(a);
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *b)
 {
 	s(b);
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)

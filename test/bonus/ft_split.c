@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 14:17:18 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 19:34:56 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 03:37:02 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,3 @@ char	**ft_split(char const *s, char c)
 	p[i] = 0;
 	return (p);
 }
-
-// #include <stdio.h>
-// int	main()
-// {
-// 	char	c = 'z';
-// 	char	*str = NULL;
-// 	char	**p = ft_split(str, c);
-// //printf("%d", wordcount(str, c));
-// 	for (int i = 0; p[i]; i++)
-// 		printf("'%s'\n", p[i]);
-// 	printf("%s", p[0]);
-// }

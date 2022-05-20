@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:17:43 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 19:25:40 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 03:36:41 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,15 @@ void	rvr(t_stack *a)
 void	rra(t_stack *a)
 {
 	rvr(a);
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *b)
 {
 	rvr(b);
-	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	rvr(a);
 	rvr(b);
-	write(1, "rrr\n", 4);
 }
