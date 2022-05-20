@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:08:27 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 20:20:40 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 01:25:33 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ int	main(int ac, char **av)
 	t_stack	a;
 	t_stack	b;
 
+	if (ac < 2)
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
 	init_stack(&a, ac);
 	init_stack(&b, ac);
 	store_elem(&a, ac, av);

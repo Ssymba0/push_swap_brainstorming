@@ -6,7 +6,7 @@
 /*   By: isabri <isabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:56:21 by isabri            #+#    #+#             */
-/*   Updated: 2022/05/19 20:11:47 by isabri           ###   ########.fr       */
+/*   Updated: 2022/05/20 01:32:01 by isabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_isdigit(char *s)
 	while (s[i])
 	{
 		if ((s[i] >= '0' && s[i] <= '9') || \
-		((s[i] == '-' || s[i] == '+') && i == 0))
+		((s[i] == '-' || s[i] == '+') && i == 0 && s[i + 1]))
 			i++;
 		else
 			return (0);
@@ -63,7 +63,6 @@ int	ft_atoi(char *s)
 	check_res(res * sign);
 	return ((int)res * sign);
 }
-
 
 int	check_dups(int *a, int elm, int size)
 {
